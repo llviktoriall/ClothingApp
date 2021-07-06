@@ -4,102 +4,144 @@
 
 @if (ViewBag.IsDifferentPlaces)
 {
-    <a class="link_city" href="#zatemnenie">Возможно, вам нужен вывод погоды для города @ViewBag.City</a>
-    <div id="zatemnenie">
-        <window>
-            Возможно, вам нужен вывод погоды для города @ViewBag.City<br>
-            <div class="popup_btn">
-                <form asp-action="ChangeCityTomorrow" method="post">
-                    <button class="text-dark" type="submit">
-                        Да
-                    </button>
-                </form>
-                <a href="#close_window" class="close_window">Закрыть</a>
-            </div>
-        </window>
-    </div>
-}
+<a class="link_city" href="#zatemnenie">Возможно, вам нужен вывод погоды для города @ViewBag.City</a>
+                <div id="zatemnenie">
+                    <window>
+                        Возможно, вам нужен вывод погоды для города @ViewBag.City<br>
+                        <div class="popup_btn">
+                            <form asp-action="ChangeCityTomorrow" method="post">
+                                <button class="text-dark" type="submit">
+                                    Да
+                                </button>
+                            </form>
+                            <a href="#close_window" class="close_window">Закрыть</a>
+                        </div>
+                    </window>
+                </div>}
 
 <div class="weather-window-five">
+    <div class="weather-headlines">
+        <table class="weather-five">
+            <tr class="five-days">
+                @foreach (var weather in ViewBag.GetWeatherForFiveDays)
+                {
+    <td class="one-of-five-day">
+        <button type="button" class="five-days-btn" style="border: none; outline: none;" id="btn_@((int)(weather[0].DateTime.ToUniversalTime().Date - DateTime.UtcNow.Date).TotalDays)">
+            <p class="day-of-week">
+                @switch ((int)(weather[0].DateTime.ToUniversalTime().Date - DateTime.UtcNow.Date).TotalDays)
+                {
+                    case (int)0:
+@: сегодня
+break;
+case (int)1:
+@: завтра
+break;
+case (int)2:
+@: @weather[0].DateTime.ToString("dddd", CultureInfo.CreateSpecificCulture("ru-RU"))
+break;
+case (int)3:
+@: @weather[0].DateTime.ToString("dddd", CultureInfo.CreateSpecificCulture("ru-RU"))
+break;
+case (int)4:
+@: @weather[0].DateTime.ToString("dddd", CultureInfo.CreateSpecificCulture("ru-RU"))
+break;
+}
+            </p>
+            <p class="date-of-week">@weather[0].DateTime.ToString("dd MMMM", CultureInfo.CreateSpecificCulture("ru-RU"))</p>
 
-    <table class="weather-five">
-        <tr class="five-days">
-            @foreach (var weather in ViewBag.GetWeatherForFiveDays)
+
+            @foreach (var weatherPart in weather)
             {
-                <td class="one-of-five-day">
-                    <button type="button" class="five-days-btn" style="border: none; outline: none;">
+@if (weatherPart.PartOfDay == PartOfDay.Morning)
+{
+<p class="temp-morning">Утром @weatherPart.TemperatureMin°</p> }
+else if (weatherPart.PartOfDay == PartOfDay.Daytime)
+{
+<p class="temp-day">Днем @weatherPart.TemperatureMax°</p> }
+else
+{
+<p class="temp-evening">Вечером @weatherPart.TemperatureMin°</p>
+                        <p class="sky-comment">@weatherPart.DescriptionSky</p>}}
+        </button>
+    </td>}
+                <td class="one-of-five-day advice">
 
-                        <p class="day-of-week">
-                            @switch ((int)(weather[0].DateTime.ToUniversalTime().Date - DateTime.UtcNow.Date).TotalDays)
-                            {
-                                case (int)0:
-                                    @: сегодня
-                                    break;
-                                case (int)1:
-                                    @: завтра
-                                    break;
-                                case (int)2:
-                                    @: @weather[0].DateTime.ToString("dddd", CultureInfo.CreateSpecificCulture("ru-RU"))
-                                    break;
-                                case (int)3:
-                                    @: @weather[0].DateTime.ToString("dddd", CultureInfo.CreateSpecificCulture("ru-RU"))
-                                    break;
-                                case (int)4:
-                                    @: @weather[0].DateTime.ToString("dddd", CultureInfo.CreateSpecificCulture("ru-RU"))
-                                    break;
-                            }
-                        </p>
-                        <p class="date-of-week">@weather[0].DateTime.ToString("dd MMMM", CultureInfo.CreateSpecificCulture("ru-RU"))</p>
-                        
+                    <p class="advice_title">
+                        <strong>Совет</strong>
+                    </p>
+                    <p class="advice_descripton">
+                        @ViewBag.Sovet
+                    </p>
 
-                        @foreach (var weatherPart in weather)
-                        {
-                            @if (weatherPart.PartOfDay == PartOfDay.Morning)
-                            {
-                                <p class="temp-morning">Утром @weatherPart.TemperatureMin°</p>
-                            }
-                            else if (weatherPart.PartOfDay == PartOfDay.Daytime)
-                            {
-                                <p class="temp-day">Днем @weatherPart.TemperatureMax°</p>
-                            }
-                            else
-                            {
-                                <p class="temp-evening">Вечером @weatherPart.TemperatureMin°</p>
-                                <p class="sky-comment">@weatherPart.DescriptionSky</p>
-                            }
-
-                        }
-                    </button>
                 </td>
+            </tr>
+        </table>
+    </div>
 
+    <script>
+        btn_0.onclick = function () {
+            getClotherByGender();
+        }
+        btn_1.onclick = function () {
+            getClotherByGender_1();
+        }
+        function getClotherByGender() {
+            var gender = document.getElementsByName('radio');
+            var wStyle = document.getElementsByClassName("weather-clothes");
+            if (wStyle.length > 0) {
+                wStyle[0].remove();
             }
-        <td class="one-of-five-day advice">
-          
-                <p class="advice_title">
-                    <strong>Совет</strong>
-                </p>
-                <p class="advice_descripton">
-                    @ViewBag.Sovet
-                </p>
-            
-        </td>
-        </tr>
-    </table>
+            if (gender[0].checked) {
 
+                var wElem = document.getElementsByClassName("weather-window-five")[0]
+                var divElem = document.createElement('div');
+                divElem.className = 'weather-clothes';
+                divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][0].UrlImageFootwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][0].UrlImageUnderwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][0].UrlImageOuterwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][0].UrlImageHat alt=\"clothes\" /></div>";
+                wElem.appendChild(divElem);
+            }
+            else {
+                var wElem = document.getElementsByClassName("weather-window-five")[0]
+                var divElem = document.createElement('div');
+                divElem.className = 'weather-clothes';
+                divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][1].UrlImageFootwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][1].UrlImageUnderwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][1].UrlImageOuterwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][1].UrlImageHat alt=\"clothes\" /></div>";
+                wElem.appendChild(divElem);
+            }
+        }
+        function getClotherByGender_1() {
+            var gender = document.getElementsByName('radio');
+            var wStyle = document.getElementsByClassName("weather-clothes");
+            if (wStyle.length > 0) {
+                wStyle[0].remove();
+            }
+            if (gender[0].checked) {
+
+                var wElem = document.getElementsByClassName("weather-window-five")[0]
+                var divElem = document.createElement('div');
+                divElem.className = 'weather-clothes';
+                divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][0].UrlImageFootwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][0].UrlImageUnderwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][0].UrlImageOuterwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][0].UrlImageHat alt=\"clothes\" /></div>";
+                wElem.appendChild(divElem);
+            }
+            else {
+                var wElem = document.getElementsByClassName("weather-window-five")[0]
+                var divElem = document.createElement('div');
+                divElem.className = 'weather-clothes';
+                divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][1].UrlImageFootwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][1].UrlImageUnderwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][1].UrlImageOuterwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][1].UrlImageHat alt=\"clothes\" /></div>";
+                wElem.appendChild(divElem);
+            }
+        }
+        //getClotherByGender();
+    </script>
 </div>
 
-@*<div class="weather-clothes">
-
-    <div class="weather-clothes_item">
-        <img src=@ViewBag.ClothingItem[0].UrlImageFootwear alt="clothes" />
-    </div>
-    <div class="weather-clothes_item">
-        <img src=@ViewBag.ClothingItem[0].UrlImageUnderwear alt="clothes" />
-    </div>
-    <div class="weather-clothes_item">
-        <img src=@ViewBag.ClothingItem[0].UrlImageOuterwear alt="clothes" />
-    </div>
-    <div class="weather-clothes_item">
-        <img src=@ViewBag.ClothingItem[0].UrlImageHat alt="clothes" />
-    </div>
-</div>*@

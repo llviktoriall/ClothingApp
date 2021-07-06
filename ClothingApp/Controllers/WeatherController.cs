@@ -169,19 +169,19 @@ namespace ClothingApp.Web.Controllers
                 .OrderBy(x => x[0].DateTime.Date).ToList();
             ViewBag.GetWeatherForFiveDays = getWeatherForFiveDays;
 
-            var styleForFiveDays = new List<List<Style>>();
-            var listClothingItem= new List<List<ClothingItem>>();
-            foreach (var i in getWeatherForFiveDays)
+            var styleForFiveDays = new List<List<Style>>();//5 дней, в каждом по 2 шт - М и Ж
+            var listClothingItem= new List<List<ClothingItem>>();//первые 5шт - М 1 день, следующие Ж 1 день, и т.д.
+            foreach (var weatherList in getWeatherForFiveDays)
             {
-                foreach (var j in i)
+                foreach (var weather in weatherList)
                 {
-                    //if (j.PartOfDay == PartOfDay.Daytime)
-                    //{
-                    //    var styles = _iClothongService.GetStyles(j).Result;
-                    //    styleForFiveDays.Add(styles);
-                    //    var clothingItems= _iClothongService.GetClothingItem(styles, weather).Result;
-                    //    listClothingItem.Add(clothingItems);
-                    //}
+                    if (weather.PartOfDay == PartOfDay.Daytime)
+                    {
+                        var styles = _iClothongService.GetStyles(weather).Result;
+                        styleForFiveDays.Add(styles);
+                        var clothingItems = _iClothongService.GetClothingItem(styles, weather).Result;
+                        listClothingItem.Add(clothingItems);
+                    }
                 }
             }
             ViewBag.GetStyleForFiveDays = styleForFiveDays;
@@ -253,17 +253,17 @@ namespace ClothingApp.Web.Controllers
             ViewBag.GetWeatherForFiveDays = getWeatherForFiveDays;
             var styleForFiveDays = new List<List<Style>>();
             var listClothingItem = new List<List<ClothingItem>>();
-            foreach (var i in getWeatherForFiveDays)
+            foreach (var weatherList in getWeatherForFiveDays)
             {
-                foreach (var j in i)
+                foreach (var weather in weatherList)
                 {
-                    //if (j.PartOfDay == PartOfDay.Daytime)
-                    //{
-                    //    var styles = _iClothongService.GetStyles(j).Result;
-                    //    styleForFiveDays.Add(styles);
-                    //    var clothingItems = _iClothongService.GetClothingItem(styles).Result;
-                    //    listClothingItem.Add(clothingItems);
-                    //}
+                    if (weather.PartOfDay == PartOfDay.Daytime)
+                    {
+                        var styles = _iClothongService.GetStyles(weather).Result;
+                        styleForFiveDays.Add(styles);
+                        var clothingItems = _iClothongService.GetClothingItem(styles, weather).Result;
+                        listClothingItem.Add(clothingItems);
+                    }
                 }
             }
             ViewBag.GetStyleForFiveDays = styleForFiveDays;
