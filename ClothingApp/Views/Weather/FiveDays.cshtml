@@ -9,7 +9,7 @@
                     <window>
                         Возможно, вам нужен вывод погоды для города @ViewBag.City<br>
                         <div class="popup_btn">
-                            <form asp-action="ChangeCityTomorrow" method="post">
+                            <form asp-action="ChangeCityFiveDays" method="post">
                                 <button class="text-dark" type="submit">
                                     Да
                                 </button>
@@ -63,7 +63,8 @@ else
 <p class="temp-evening">Вечером @weatherPart.TemperatureMin°</p>
                         <p class="sky-comment">@weatherPart.DescriptionSky</p>}}
         </button>
-    </td>}
+    </td>
+}
                 <td class="one-of-five-day advice">
 
                     <p class="advice_title">
@@ -85,6 +86,15 @@ else
         btn_1.onclick = function () {
             getClotherByGender_1();
         }
+        btn_2.onclick = function () {
+            getClotherByGender_2();
+        }
+        btn_3.onclick = function () {
+            getClotherByGender_3();
+        }
+        btn_4.onclick = function () {
+            getClotherByGender_4();
+        }
         function getClotherByGender() {
             var gender = document.getElementsByName('radio');
             var wStyle = document.getElementsByClassName("weather-clothes");
@@ -92,14 +102,14 @@ else
                 wStyle[0].remove();
             }
             if (gender[0].checked) {
-
                 var wElem = document.getElementsByClassName("weather-window-five")[0]
                 var divElem = document.createElement('div');
                 divElem.className = 'weather-clothes';
                 divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][0].UrlImageFootwear alt=\"clothes\" /></div>" +
                     " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][0].UrlImageUnderwear alt=\"clothes\" /></div>" +
                     " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][0].UrlImageOuterwear alt=\"clothes\" /></div>" +
-                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][0].UrlImageHat alt=\"clothes\" /></div>";
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][0].UrlImageHat alt=\"clothes\" /></div>"+
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][0].UrlImageAccessory alt=\"clothes\" /></div>";
                 wElem.appendChild(divElem);
             }
             else {
@@ -109,7 +119,8 @@ else
                 divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][1].UrlImageFootwear alt=\"clothes\" /></div>" +
                     " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][1].UrlImageUnderwear alt=\"clothes\" /></div>" +
                     " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][1].UrlImageOuterwear alt=\"clothes\" /></div>" +
-                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][1].UrlImageHat alt=\"clothes\" /></div>";
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][1].UrlImageHat alt=\"clothes\" /></div>"+
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0][1].UrlImageAccessory alt=\"clothes\" /></div>";
                 wElem.appendChild(divElem);
             }
         }
@@ -127,7 +138,8 @@ else
                 divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][0].UrlImageFootwear alt=\"clothes\" /></div>" +
                     " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][0].UrlImageUnderwear alt=\"clothes\" /></div>" +
                     " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][0].UrlImageOuterwear alt=\"clothes\" /></div>" +
-                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][0].UrlImageHat alt=\"clothes\" /></div>";
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][0].UrlImageHat alt=\"clothes\" /></div>"+
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][0].UrlImageAccessory alt=\"clothes\" /></div>";
                 wElem.appendChild(divElem);
             }
             else {
@@ -137,11 +149,101 @@ else
                 divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][1].UrlImageFootwear alt=\"clothes\" /></div>" +
                     " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][1].UrlImageUnderwear alt=\"clothes\" /></div>" +
                     " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][1].UrlImageOuterwear alt=\"clothes\" /></div>" +
-                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][1].UrlImageHat alt=\"clothes\" /></div>";
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][1].UrlImageHat alt=\"clothes\" /></div>"+
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1][1].UrlImageAccessory alt=\"clothes\" /></div>";
                 wElem.appendChild(divElem);
             }
         }
-        //getClotherByGender();
+        function getClotherByGender_2() {
+            var gender = document.getElementsByName('radio');
+            var wStyle = document.getElementsByClassName("weather-clothes");
+            if (wStyle.length > 0) {
+                wStyle[0].remove();
+            }
+            if (gender[0].checked) {
+
+                var wElem = document.getElementsByClassName("weather-window-five")[0]
+                var divElem = document.createElement('div');
+                divElem.className = 'weather-clothes';
+                divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[2][0].UrlImageFootwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[2][0].UrlImageUnderwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[2][0].UrlImageOuterwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[2][0].UrlImageHat alt=\"clothes\" /></div>"+
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[2][0].UrlImageAccessory alt=\"clothes\" /></div>";
+                wElem.appendChild(divElem);
+            }
+            else {
+                var wElem = document.getElementsByClassName("weather-window-five")[0]
+                var divElem = document.createElement('div');
+                divElem.className = 'weather-clothes';
+                divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[2][1].UrlImageFootwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[2][1].UrlImageUnderwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[2][1].UrlImageOuterwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[2][1].UrlImageHat alt=\"clothes\" /></div>"+
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[2][1].UrlImageAccessory alt=\"clothes\" /></div>";
+                wElem.appendChild(divElem);
+            }
+        }
+        function getClotherByGender_3() {
+            var gender = document.getElementsByName('radio');
+            var wStyle = document.getElementsByClassName("weather-clothes");
+            if (wStyle.length > 0) {
+                wStyle[0].remove();
+            }
+            if (gender[0].checked) {
+
+                var wElem = document.getElementsByClassName("weather-window-five")[0]
+                var divElem = document.createElement('div');
+                divElem.className = 'weather-clothes';
+                divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[3][0].UrlImageFootwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[3][0].UrlImageUnderwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[3][0].UrlImageOuterwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[3][0].UrlImageHat alt=\"clothes\" /></div>"+
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[3][0].UrlImageAccessory alt=\"clothes\" /></div>";
+                wElem.appendChild(divElem);
+            }
+            else {
+                var wElem = document.getElementsByClassName("weather-window-five")[0]
+                var divElem = document.createElement('div');
+                divElem.className = 'weather-clothes';
+                divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[3][1].UrlImageFootwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[3][1].UrlImageUnderwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[3][1].UrlImageOuterwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[3][1].UrlImageHat alt=\"clothes\" /></div>"+
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[3][1].UrlImageAccessory alt=\"clothes\" /></div>";
+                wElem.appendChild(divElem);
+            }
+        }
+        function getClotherByGender_4() {
+            var gender = document.getElementsByName('radio');
+            var wStyle = document.getElementsByClassName("weather-clothes");
+            if (wStyle.length > 0) {
+                wStyle[0].remove();
+            }
+            if (gender[0].checked) {
+
+                var wElem = document.getElementsByClassName("weather-window-five")[0]
+                var divElem = document.createElement('div');
+                divElem.className = 'weather-clothes';
+                divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[4][0].UrlImageFootwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[4][0].UrlImageUnderwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[4][0].UrlImageOuterwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[4][0].UrlImageHat alt=\"clothes\" /></div>"+
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[4][0].UrlImageAccessory alt=\"clothes\" /></div>";
+                wElem.appendChild(divElem);
+            }
+            else {
+                var wElem = document.getElementsByClassName("weather-window-five")[0]
+                var divElem = document.createElement('div');
+                divElem.className = 'weather-clothes';
+                divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[4][1].UrlImageFootwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[4][1].UrlImageUnderwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[4][1].UrlImageOuterwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[4][1].UrlImageHat alt=\"clothes\" /></div>"+
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[4][1].UrlImageAccessory alt=\"clothes\" /></div>";
+                wElem.appendChild(divElem);
+            }
+        }
     </script>
 </div>
 
