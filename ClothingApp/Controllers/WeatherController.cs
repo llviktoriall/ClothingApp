@@ -79,13 +79,7 @@ namespace ClothingApp.Web.Controllers
         public List<Weather> GetWeatherToday(string city)
         {
             var respone = _weatherService.GetWeatherForToday(city);
-            foreach (Weather weather in respone)
-            {
-                if (weather.PartOfDay == PartOfDay.Evening)
-                {
 
-                }
-            }
             return respone;
         }
 
