@@ -1,0 +1,532 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+h1 {
+    font-size: 73px;
+    letter-spacing: 1px;
+    width: 100%;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    color: #474747;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.d14 h1 {
+    display: table;
+    width: auto;
+    margin: 15% auto;
+    letter-spacing: 2px;
+}
+
+    .d14 h1:before {
+        content: "";
+        position: absolute;
+        top: -32%;
+        left: -25px;
+        width: 68px;
+        height: 45px;
+        border-top: 8px solid #9bc2d5;
+        border-left: 8px solid #9bc2d5;
+    }
+
+    .d14 h1:after {
+        content: "";
+        position: absolute;
+        bottom: -32%;
+        right: -25px;
+        width: 68px;
+        height: 45px;
+        border-bottom: 8px solid #9bc2d5;
+        border-right: 8px solid #9bc2d5;
+    }
+
+.weather {
+    height: 400px;
+}
+
+.menu {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #9bc2d5;
+}
+
+.form-search {
+    width: 300px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-right: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+    .form-search input {
+        width: 200px;
+        height: 30px;
+        padding: 7px 7px 7px 15px;
+        border-radius: 42px;
+        background: #ffffff;
+        outline: none;
+        position: relative;
+        transition: .3s linear;
+        border: none;
+    }
+
+    .form-search button {
+        width: 30px;
+        height: 30px;
+        background: none;
+        border: none;
+        padding: 0;
+    }
+
+        .form-search button:before {
+            content: "\f002";
+            font-family: FontAwesome;
+            color: #324b4e;
+        }
+
+.menu-choice {
+    width: 65%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+    .menu-choice a {
+        font-size: 20px;
+        color: white;
+        text-decoration: none;
+        display: inline-block;
+        line-height: 1;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+    }
+
+        .menu-choice a:after {
+            display: block;
+            content: "";
+            height: 3px;
+            width: 0%;
+            background-color: white;
+            transition: width 0.4s ease-in-out;
+        }
+
+        .menu-choice a:hover:after,
+        .menu-choice a:focus:after, .menu-choice a:active:after {
+            width: 100%;
+        }
+
+
+        .menu-choice a:hover {
+            color: white;
+        }
+
+/*.tomorrow {
+    margin-left: 50px;
+}
+
+.week {
+    margin-left: 50px;
+}*/
+.login{
+    margin-left: 150px;
+    
+}
+.text-dark {
+    color: white !important;
+    border: 1px solid white;
+    font-weight: 600;
+    background: none;
+    width: 89px;
+    height: 42px;
+    border-radius: 5px;
+}
+.close_window {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white !important;
+    border: 1px solid white;
+    font-weight: 600;
+    background: none;
+    width: 89px;
+    height: 42px;
+    border-radius: 5px;
+}
+
+    .close_window:hover {
+        text-decoration: none;
+        background-color: #ffffff33;
+    }
+.popup_btn {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+.link_city {
+    width: 100%;
+    color: #9bc2d5;
+    padding: 1px 13px 1px 13px;
+    border-radius: 5px;
+}
+    .link_city:hover {
+        color: #474747;
+        
+        text-decoration: none;
+    }
+
+
+    .text-dark:hover {
+        background-color: #ffffff33;
+    }
+
+.weather-clothes {
+    
+    width: 80%;
+    display: flex;
+    height: 121px;
+    align-items: center;
+    margin: 10px auto 0 auto;
+    justify-content: space-between;
+}
+
+.weather-clothes_item {
+    transition: all 0.3s linear;
+    cursor: pointer;
+    width: 121px;
+    height: 121px;
+    box-shadow: 4px 4px 28px -4px rgba(34, 60, 80, 0.2);
+    border-radius: 24px;
+    display: flex;
+    align-items: center; justify-content: center;
+}
+    .weather-clothes_item img {
+        width: 100%;
+        height: 100%;
+        border-radius: 24px;
+        border: 3px solid #9bc2d5;
+    }
+.weather-clothes_item:hover {
+    transform: scale(1.02);
+} 
+.gender {
+    overflow: hidden;
+    font-size: 35px;
+    width: 220px;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+/*.gender-item {
+    float: left;
+    display: inline-block;
+}*/
+
+    .gender-item input[type=radio] {
+        display: none;
+    }
+
+.gender-item label {
+    display: inline-block;
+    padding: 0px 15px;
+    height: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    line-height: 34px;
+    border-right: none;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 7px 4px 24px -3px rgb(34 60 80 / 20%);
+}
+
+.gender .man label {
+    border-radius: 6px 0 0 6px;
+    color: white;
+}
+
+.gender .woman label {
+    border-radius: 0 6px 6px 0;
+    color: white;
+}
+
+/* Checked */
+    .gender .man input[type=radio]:checked + label {
+    background: white;
+    color: #9bc2d5;
+}
+
+.gender .woman input[type=radio]:checked + label {
+    background: white;
+    color: #9bc2d5;
+}
+
+.weather-window {
+    box-shadow: 4px 4px 21px 0px rgb(34 60 80 / 20%);
+    height: 300px;
+    width: 100%;
+    margin-top: 3%;
+    display: flex;
+    border-radius: 24px;
+}
+
+.weather-headlines {
+    width: 70%;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+}
+
+.headlines {
+    width: 100%;
+    margin-bottom: 2%;
+    color: #474747;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.date {
+    font-size: 63px;
+    width: 10%;
+    background: #9bc2d5;
+    color: white;
+    padding-bottom: 23px;
+    padding-left: 25px;
+    text-align: center;
+    border-radius: 24px 0 0 0;
+    border-bottom: 2px solid #9bc2d5;
+}
+
+.month {
+    font-size: 27px;
+    vertical-align: bottom;
+    background: #9bc2d5;
+    width: 20%;
+    line-height: 35px;
+    color: white;
+    border-bottom: 2px solid #9bc2d5;
+}
+
+.char {
+    width: 45%;
+    border-bottom: 2px solid #9bc2d5;
+}
+
+.wind {
+    width: 25%;
+    font-size: 20px;
+    vertical-align: bottom;
+    border-bottom: 2px solid #9bc2d5;
+}
+
+.hourly-weather {
+    width: 800px;
+    margin-left: 290px;
+    font-size: 20px;
+    height: 200px;
+    margin-top: 20px;
+}
+
+    .hourly-weather tr {
+        height: 50px;
+    }
+
+.table-weather {
+    width: 100%;
+    padding: 20%;
+    color: #474747;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+.temp {
+    width: 30%;
+    padding-left: 10%;
+}
+
+.characteristic {
+    width: 45%;
+    text-align: center;
+}
+.wind-num {
+    width: 25%;
+    font-weight: bold;
+}
+
+.clothes {
+    margin-left: 250px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.icons {
+    white-space: nowrap;
+}
+
+    .icons div {
+        width: 200px;
+        height: 200px;
+        display: inline-block;
+    }
+
+.advice {
+    width: 30%;
+    font-size: 20px;
+    background-color: #9bc2d5;
+    border-radius: 0 24px 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-direction: column;
+}
+
+
+.advice_title {
+    height: 40%;
+    font-size: 28px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.advice_descripton {
+    color: white;
+    height: 60%;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+.weather-five {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    width: 100%;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+.five-days {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+}
+
+.one-of-five-day {
+    cursor: pointer;
+    transition: all 0.3s linear;
+    width: 184px;
+    height: 100%;
+    border-radius: 24px;
+    box-shadow: 1px 3px 25px -1px rgb(34 60 80 / 20%);
+    box-sizing: border-box;
+    margin: 0 11px;
+}
+
+.five-days-btn {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    
+    background-color: #fff;
+    border: none;
+    outline: none;
+}
+
+.one-of-five-day:hover {
+    box-shadow: 1px 3px 25px 25px rgba(34, 60, 80, 0.13);
+    transform: scale(1.05);    
+}
+.five-days-btn:focus {
+    box-shadow: 1px 3px 25px 25px rgba(34, 60, 80, 0.13);
+    transform: scale(1.05);
+    border: none;
+    outline: none;
+}
+
+.weather-five p {
+    margin: 10px 5%;
+    text-align: center;
+    margin: 0 0 10px 0;
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+.day-of-week {
+    font-weight: 500;
+    background-color: #9bc2d5;
+    width: 100%;
+    height: 17%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 24px 24px 0 0;
+}
+.date-of-week {
+    text-decoration: underline;
+    text-decoration-color: #9bc2d5;
+}
+#zatemnenie:target {
+    display: block;
+}
+
+#zatemnenie {
+    background: rgba(102, 102, 102, 0.68);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 9999999999;
+}
+
+window {
+    position: absolute;
+    top: 50%;
+    background-color: #9bc2d5;
+    color: white;
+    text-align: center;
+    left: 50%;
+    font-weight: 500;
+    width: 400px;
+    border-radius: 24px;
+    padding: 50px;
+    transform: translate(-50%,-50%);
+}
+
+div#main_text a.close_window {
+    position: absolute;
+    right: 10px;
+    top: 4px;
+    border: none;
+}
+
+

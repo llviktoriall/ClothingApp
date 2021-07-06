@@ -1,0 +1,105 @@
+﻿@using ClothingApp.Data.Common.Models;
+@using System;
+@using System.Globalization;
+
+@if (ViewBag.IsDifferentPlaces)
+{
+    <a class="link_city" href="#zatemnenie">Возможно, вам нужен вывод погоды для города @ViewBag.City</a>
+    <div id="zatemnenie">
+        <window>
+            Возможно, вам нужен вывод погоды для города @ViewBag.City<br>
+            <div class="popup_btn">
+                <form asp-action="ChangeCityTomorrow" method="post">
+                    <button class="text-dark" type="submit">
+                        Да
+                    </button>
+                </form>
+                <a href="#close_window" class="close_window">Закрыть</a>
+            </div>
+        </window>
+    </div>
+}
+
+<div class="weather-window-five">
+
+    <table class="weather-five">
+        <tr class="five-days">
+            @foreach (var weather in ViewBag.GetWeatherForFiveDays)
+            {
+                <td class="one-of-five-day">
+                    <button type="button" class="five-days-btn" style="border: none; outline: none;">
+
+                        <p class="day-of-week">
+                            @switch ((int)(weather[0].DateTime.ToUniversalTime().Date - DateTime.UtcNow.Date).TotalDays)
+                            {
+                                case (int)0:
+                                    @: сегодня
+                                    break;
+                                case (int)1:
+                                    @: завтра
+                                    break;
+                                case (int)2:
+                                    @: @weather[0].DateTime.ToString("dddd", CultureInfo.CreateSpecificCulture("ru-RU"))
+                                    break;
+                                case (int)3:
+                                    @: @weather[0].DateTime.ToString("dddd", CultureInfo.CreateSpecificCulture("ru-RU"))
+                                    break;
+                                case (int)4:
+                                    @: @weather[0].DateTime.ToString("dddd", CultureInfo.CreateSpecificCulture("ru-RU"))
+                                    break;
+                            }
+                        </p>
+                        <p class="date-of-week">@weather[0].DateTime.ToString("dd MMMM", CultureInfo.CreateSpecificCulture("ru-RU"))</p>
+                        
+
+                        @foreach (var weatherPart in weather)
+                        {
+                            @if (weatherPart.PartOfDay == PartOfDay.Morning)
+                            {
+                                <p class="temp-morning">Утром @weatherPart.TemperatureMin°</p>
+                            }
+                            else if (weatherPart.PartOfDay == PartOfDay.Daytime)
+                            {
+                                <p class="temp-day">Днем @weatherPart.TemperatureMax°</p>
+                            }
+                            else
+                            {
+                                <p class="temp-evening">Вечером @weatherPart.TemperatureMin°</p>
+                                <p class="sky-comment">@weatherPart.DescriptionSky</p>
+                            }
+
+                        }
+                    </button>
+                </td>
+
+            }
+        <td class="one-of-five-day advice">
+          
+                <p class="advice_title">
+                    <strong>Совет</strong>
+                </p>
+                <p class="advice_descripton">
+                    @ViewBag.Sovet
+                </p>
+            
+        </td>
+        </tr>
+    </table>
+
+</div>
+
+@*<div class="weather-clothes">
+
+    <div class="weather-clothes_item">
+        <img src=@ViewBag.ClothingItem[0].UrlImageFootwear alt="clothes" />
+    </div>
+    <div class="weather-clothes_item">
+        <img src=@ViewBag.ClothingItem[0].UrlImageUnderwear alt="clothes" />
+    </div>
+    <div class="weather-clothes_item">
+        <img src=@ViewBag.ClothingItem[0].UrlImageOuterwear alt="clothes" />
+    </div>
+    <div class="weather-clothes_item">
+        <img src=@ViewBag.ClothingItem[0].UrlImageHat alt="clothes" />
+    </div>
+</div>*@

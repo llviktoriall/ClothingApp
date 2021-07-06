@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClothingApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>       
+            <div class="menu">
+                <div class="form-search">
+                    <input id="place" type="text" placeholder="Введите город">
+                    <button class="btn" type="submit"></button>
+                </div>
+                <div class="menu-choice">
+                    <a asp-area="" asp-controller="Weather" asp-action="Today" class="today">Сегодня</a>
+                    <a asp-area="" asp-controller="Weather" asp-action="Tomorrow" class="tomorrow">Завтра</a>
+                    <a asp-area="" asp-controller="Weather" asp-action="FiveDays" class="week">5 дней</a>
+                    <partial name="_LoginPartial" />
+                </div>
+                <div class="gender">
+                    <div class="gender-item man">
+                        <input id="fid-1" type="radio" name="radio" value="off" checked onclick="onGenderChangeClick()">
+                        <label for="fid-1">М</label>
+                    </div>
+                    <div class="gender-item woman">
+                        <input id="fid-2" type="radio" name="radio" value="on" onclick="onGenderChangeClick()">
+                        <label for="fid-2">Ж</label>
+                    </div>
+                </div>
+            </div>                   
+    </header>
+    <div class="container">
+        
+        @RenderBody()
+       
+    </div>
+
+    <script>
+        function onGenderChangeClick() {
+            if (this.getClotherByGender) {
+                this.getClotherByGender();
+            }
+            return;
+        }
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

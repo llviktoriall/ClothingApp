@@ -1,0 +1,54 @@
+﻿<style>
+    .my_button {
+        font-weight: 700;
+        width: 200px;
+        height: 100px;
+        color: white;
+        margin: 10px auto;
+        margin-left: -20px;
+        text-decoration: none;
+        padding: .8em 1em calc(.8em + 3px);
+        border-radius: 3px;
+        background: #77a1b5;
+        box-shadow: 0 -3px #588aa1 inset;
+        transition: 0.2s;
+    }
+
+   
+    .text{
+        margin:10px;
+    }
+</style>
+<div class="admin">
+    <div class="admin-control">
+        <b>Панель управления</b>
+        <form asp-action="GoToRoles" method="post">
+            <button class="my_button" type="submit">
+                Управление сотрудниками
+            </button>
+        </form>
+        <form asp-action="GoToStyles" method="post">
+            <button class="my_button" type="submit">
+                Управление образами
+            </button>
+        </form>
+        
+    </div>
+</div>
+<div class="temp">
+    <form asp-action="" method="post">
+        <p>
+            <b>Температура</b><Br>
+            <b>От</b><input class="text" type="text"  name="temp1" size="10">
+            <b>До</b><input class="text" type="text"  name="temp2" size="10">
+            <b>Дождь</b><Br>
+            <input type="radio" name="rain"  value="true">Да<Br>
+            <input type="radio" name="rain" value="false">Нет<Br>
+            <b>Совет</b><Br>
+            <textarea name="advice" cols="40" rows="3"></textarea>
+        <p>
+            <input type="submit" value="Отправить">
+        </p>
+       
+    </form>
+</div>

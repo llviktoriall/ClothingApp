@@ -1,0 +1,72 @@
+﻿<style>
+    .my_button {
+        font-weight: 700;
+        width: 200px;
+        height: 100px;
+        color: white;
+        margin: 10px auto;
+        margin-left: -20px;
+        text-decoration: none;
+        padding: .8em 1em calc(.8em + 3px);
+        border-radius: 3px;
+        background: #77a1b5;
+        box-shadow: 0 -3px #588aa1 inset;
+        transition: 0.2s;
+    }
+
+    .change_button {
+        font-weight: 700;
+        width: 120px;
+        height: 50px;
+        color: white;
+        margin: 10px auto;
+        margin-left: 520px;
+        margin-top: -2700px;
+        text-decoration: none;
+        padding: .8em 1em calc(.8em + 3px);
+        border-radius: 3px;
+        background: #77a1b5;
+        box-shadow: 0 -3px #588aa1 inset;
+        transition: 0.2s;
+    }
+
+    
+ 
+</style>
+<div class="admin">
+    <div class="admin-control">
+        <b>Панель управления</b>
+        <form asp-action="GoToRoles" method="post">
+            <button class="my_button" type="submit">
+                Управление сотрудниками
+            </button>
+        </form>
+        <form asp-action="GoToStyles" method="post">
+            <button class="my_button" type="submit">
+                Управление образами
+            </button>
+        </form>
+        <form asp-action="Style" method="post">
+            <button class="change_button" type="submit">
+                Изменить
+            </button>
+        </form>
+    </div>
+</div>
+<div class="style">
+    <table class="table-style">
+        <tr>
+            
+            @*@foreach (var style in ViewBag.GetAllStyles)
+        {
+            <tr>
+
+                <td class="style">@style.StyleId,@style.Style</td>
+
+            </tr>
+        }*@
+            <td class="temp">образы</td>
+
+        </tr>
+    </table>
+</div>

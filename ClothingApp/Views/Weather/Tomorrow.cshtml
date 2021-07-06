@@ -1,0 +1,96 @@
+﻿@using ClothingApp.Data.Common.Models
+
+@if (ViewBag.IsDifferentPlaces)
+{
+    <a class="link_city" href="#zatemnenie">Возможно, вам нужен вывод погоды для города @ViewBag.City</a>
+    <div id="zatemnenie">
+        <window>
+            Возможно, вам нужен вывод погоды для города @ViewBag.City<br>
+            <div class="popup_btn">
+                <form asp-action="ChangeCityTomorrow" method="post">
+                    <button class="text-dark" type="submit">
+                        Да
+                    </button>
+                </form>
+                <a href="#close_window" class="close_window">Закрыть</a>
+            </div>
+        </window>
+    </div>
+}
+
+<div class="weather">
+    <div class="weather-window">
+        <div class="weather-headlines">
+            <table class="headlines">
+                <tr>
+                    <td class="date">@ViewBag.DateTimeTomorrow[0]</td>
+                    <td class="month"><strong>@ViewBag.DateTimeTomorrow[1]</strong><br>завтра</td>
+                    <td class="char"></td>
+                    <td class="wind">Ветер, м/с</td>
+                </tr>
+            </table>
+            <table class="table-weather">
+                @foreach (var weather in ViewBag.GetWeatherTomorrow)
+                {
+                    <tr>
+                        @if (weather.PartOfDay == PartOfDay.Morning)
+                        {
+                            <td class="temp">Утром<br><b>@weather.TemperatureMin° ... @weather.TemperatureMax°</b></td>
+                        }
+                        else if (weather.PartOfDay == PartOfDay.Daytime)
+                        {
+                            <td class="temp">Днем<br><b>@weather.TemperatureMin° ... @weather.TemperatureMax°</b></td>
+                        }
+                        else
+                        {
+                            <td class="temp">Вечером<br><b>@weather.TemperatureMin° ... @weather.TemperatureMax°</b></td>
+                        }
+
+                        <td class="characteristic">@weather.DescriptionSky</td>
+                        <td class="wind-num">@weather.WindSpeed</td>
+                    </tr>
+                }
+            </table>
+        </div>
+       
+        <div class="advice">
+            <p class="advice_title">
+                <strong>Совет</strong>
+            </p>
+            <p class="advice_descripton">
+                @ViewBag.Sovet
+            </p>
+        </div>
+    </div>
+    <script>
+        function getClotherByGender() {
+            var gender = document.getElementsByName('radio');
+            var wStyle = document.getElementsByClassName("weather-clothes");
+            if (wStyle.length > 0) {
+                wStyle[0].remove();
+            }
+            if (gender[0].checked) {
+
+                var wElem = document.getElementsByClassName("weather")[0]
+                var divElem = document.createElement('div');
+                divElem.className = 'weather-clothes';
+                divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0].UrlImageFootwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0].UrlImageUnderwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0].UrlImageOuterwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[0].UrlImageHat alt=\"clothes\" /></div>";
+                wElem.appendChild(divElem);
+            }
+            else {
+                var wElem = document.getElementsByClassName("weather")[0]
+                var divElem = document.createElement('div');
+                divElem.className = 'weather-clothes';
+                divElem.innerHTML = " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1].UrlImageFootwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1].UrlImageUnderwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1].UrlImageOuterwear alt=\"clothes\" /></div>" +
+                    " <div class=\"weather-clothes_item\"><img src=@ViewBag.ClothingItem[1].UrlImageHat alt=\"clothes\" /></div>";
+                wElem.appendChild(divElem);
+            }
+        }
+        getClotherByGender();
+    </script>
+</div>
