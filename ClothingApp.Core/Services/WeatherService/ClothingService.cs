@@ -36,11 +36,6 @@ namespace ClothingApp.Core.Services.WeatherService
                 booleanRule.BoolType = BoolType.PresenceOfSnow;
                 booleanRule.IsExist = true;
             }
-            else if (weather.WindSpeed > 0)
-            {
-                booleanRule.BoolType = BoolType.PresenceOfWind;
-                booleanRule.IsExist = true;
-            }
 
             else
             {
