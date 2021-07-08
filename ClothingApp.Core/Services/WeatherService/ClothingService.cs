@@ -169,32 +169,32 @@ namespace ClothingApp.Core.Services.WeatherService
             string sovet = "";
             if (weather.DescriptionSky.Contains("дождь"))
             {
-                sovet += "Возьмите зонтик";
+                sovet += "Возьмите зонтик. ";
             }
             else if (weather.DescriptionSky.Contains("снег"))
             {
-                sovet += "\n" + "Не забудьте варежки и шарф";
+                sovet += "\n" + "Не забудьте варежки и шарф. ";
             }
-            else if (weather.TemperatureMin > 27)
+            else if (weather.TemperatureMin > 25)
             {
-                sovet += "\n" + "Жаркий денёк, наденьте светлые тона";
+                sovet += "\n" + "Жаркий денёк, выбирайте светлые тона в одежде. ";
             }
 
             else if (weather.TemperatureMin < 0)
             {
-                sovet += "\n" + "Оденьтесь теплее";
+                sovet += "\n" + "Оденьтесь теплее. ";
             }
             else if (weather.TemperatureMin < 15)
             {
-                sovet += "\n" + "Не забудьте кофту или куртку";
+                sovet += "\n" + "Не забудьте кофту или куртку. ";
             }
             else if (weather.TemperatureMin > 15)
             {
-                sovet += "\n" + "Тёплый денёк, можно одеться полегче";
+                sovet += "\n" + "Тёплый денёк, можно одеться полегче. ";
             }
             else
             {
-                sovet += "Ваша улыбка и хорошее настроение это главное украшение";
+                sovet += "Ваша улыбка и хорошее настроение - это главное украшение. ";
             }
             return sovet;
         }
@@ -214,19 +214,19 @@ namespace ClothingApp.Core.Services.WeatherService
 
             if(tempSrednee<10)
             {
-                sovet += "\n" + "Неделя будет прохладной,одевайтесь теплее";
+                sovet += "\n" + "Неделя будет прохладной,одевайтесь теплее. ";
             }
             else if (tempSrednee > 10&& tempSrednee<20)
             {
-                sovet += "\n" + "Неделя будет достаточно теплой, но куртка или кофта не помешает";
+                sovet += "\n" + "Неделя будет достаточно теплой, но куртка или кофта не помешает. ";
             }
             else if (tempSrednee > 20)
             {
-                sovet += "\n" + "Неделя будет жаркой, одевайтесь полегче";
+                sovet += "\n" + "Неделя будет жаркой, одевайтесь полегче. ";
             }
             else
             {
-                sovet += "Ваша улыбка и хорошее настроение это главное украшение";
+                sovet += "Ваша улыбка и хорошее настроение - это главное украшение. ";
             }
             return sovet;
         }
