@@ -259,19 +259,216 @@ namespace ClothingApp.Data.Common
 
             // заполнение образов женщин
             builder.Entity<ClothingItem>().HasData(
+               new ClothingItem
+               {
+                   Id = 22,
+                   Name = "Woman:-40-",
+                   UrlImageFootwear = "/Images/Woman/Woman.-40-/Woman.-40-/footwear_6_w_m.png",
+                   UrlImageOuterwear = "/Images/Woman/Woman.-40-/Woman.-40-/coat_2_w_m.png",
+                   UrlImageUnderwear = "/Images/Woman/Woman.-40-/Woman.-40-/trousers_2_w_m.png",
+                   UrlImageAccessory = "/Images/Woman/Woman.-40-/Woman.-40-/hat_1_w_m.png",
+                   UrlImageAdd = "/Images/Woman/Woman.-40-/Woman.-40-/accessory_5_w_m.png"
+               },
                 new ClothingItem
                 {
-                    Id = 2,
-                    Name = "Man:20-25",
-                    UrlImageFootwear = "/Images/Man/Man.20-25/footwear_3.png",
-                    UrlImageOuterwear = "/Images/Man/Man.20-25/mens.png",
-                    UrlImageUnderwear = "/Images/Man/Man.20-25/jeans.png",
-                    UrlImageAccessory = "/Images/Man/Man.20-25/umbrella.png",
-                    UrlImageAdd = "/Images/Man/Man.20-25/hat_3.png"
+                    Id = 23,
+                    Name = "Woman:-40-25",
+                    UrlImageFootwear = "/Images/Woman/Woman:-40-25/Woman:-40-25/footwear_7_w_m.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:-40-25/Woman:-40-25/sweater_1_w_m.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:-40-25/Woman:-40-25/trousers_2_w_m.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:-40-25/Woman:-40-25/hat_1_w_m.png",
+                    UrlImageAdd = "/Images/Woman/Woman:-40-25/Woman:-40-25/hat_1_w_m.png"
                 },
-
-
-
+                new ClothingItem
+                {
+                    Id = 24,
+                    Name = "Woman:-25-15",
+                    UrlImageFootwear = "/Images/Woman/Woman:-25-15/Woman:-25-15/footwear_2_w.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:-25-15/Woman:-25-15/undershirt_6_w.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:-25-15/Woman:-25-15/trousers_1_w_m.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:-25-15/Woman:-25-15/accessory_1_w.png",
+                    UrlImageAdd = "/Images/Woman/Woman:-25-15/Woman:-25-15/coat_2_w.png"
+                },
+                new ClothingItem
+                {
+                    Id = 25,
+                    Name = "Woman:-25-15.snow",
+                    UrlImageFootwear = "/Images/Woman/Woman:-25-15/Woman:-25-15.snow/footwear_2_w.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:-25-15/Woman:-25-15.snow/coat_2_w_m.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:-25-15/Woman:-25-15.snow/trousers_1_w_m.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:-25-15/Woman:-25-15.snow/hat_1_w_m.png",
+                    UrlImageAdd = "/Images/Woman/Woman:-25-15/Woman:-25-15.snow/accessory_5_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 26,
+                    Name = "Woman:-15-5",
+                    UrlImageFootwear = "/Images/Woman/Woman:-15-5/Woman:-15-5/footwear_8_w_m.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:-15-5/Woman:-15-5/hoody_2_w_m.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:-15-5/Woman:-15-5/trousers_2_w_m.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:-15-5/Woman:-15-5/hat_4_w_m.png",
+                    UrlImageAdd = "/Images/Woman/Woman:-15-5/Woman:-15-5/coat_2_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 27,
+                    Name = "Woman:-5-0",
+                    UrlImageFootwear = "/Images/Woman/Woman:-5-0/Woman:-5-0/footwear_3_w_m.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:-5-0/Woman:-5-0/shirt_1_w.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:-5-0/Woman:-5-0/jeans_1_w_m.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:-5-0/Woman:-5-0/hat_4_w_m.png",
+                    UrlImageAdd = "/Images/Woman/Woman:-5-0/Woman:-5-0/coat_3_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 28,
+                    Name = "Woman:-5-0.snow",
+                    UrlImageFootwear = "/Images/Woman/Woman:-5-0/Woman:-5-0.snow/footwear_3_w_m.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:-5-0/Woman:-5-0.snow/undershirt_1_m.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:-5-0/Woman:-5-0.snow/jeans_1_w_m.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:-5-0/Woman:-5-0.snow/hat_4_w_m.png",
+                    UrlImageAdd = "/Images/Woman/Woman:-5-0/Woman:-5-0.snow/coat_3_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 29,
+                    Name = "Woman:0+5",
+                    UrlImageFootwear = "/Images/Woman/Woman:0+5/Woman:0+5/footwear_1_w_m.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:0+5/Woman:0+5/undershirt_5_w.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:0+5/Woman:0+5/trousers_2_w.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:0+5/Woman:0+5/accessory_2_w_m.png",
+                    UrlImageAdd = "/Images/Woman/Woman:0+5/Woman:0+5/coat_3_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 30,
+                    Name = "Woman:0+5.rain",
+                    UrlImageFootwear = "/Images/Woman/Woman:0+5/Woman:0+5.rain/footwear_1_w_m.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:0+5/Woman:0+5.rain/undershirt_5_w.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:0+5/Woman:0+5.rain/trousers_2_w.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:0+5/Woman:0+5.rain/accessory_4_w_m.png",
+                    UrlImageAdd = "/Images/Woman/Woman:0+5/Woman:0+5.rain/coat_3_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 31,
+                    Name = "Woman:+5+15",
+                    UrlImageFootwear = "/Images/Woman/Woman:+5+15/Woman:+5+15/footwear_1_w.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:+5+15/Woman:+5+15/tshirt_w.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:+5+15/Woman:+5+15/trousers_1_w.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:+5+15/Woman:+5+15/accessory_1_w.png",
+                    UrlImageAdd = "/Images/Woman/Woman:+5+15/Woman:+5+15/blazer_2_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 32,
+                    Name = "Woman:+5+15.rain",
+                    UrlImageFootwear = "/Images/Woman/Woman:+5+15/Woman:+5+15.rain/footwear_1_w.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:+5+15/Woman:+5+15.rain/tshirt_w.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:+5+15/Woman:+5+15.rain/trousers_1_w.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:+5+15/Woman:+5+15.rain/accessory_4_w_m.png",
+                    UrlImageAdd = "/Images/Woman/Woman:+5+15/Woman:+5+15.rain/blazer_2_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 33,
+                    Name = "Woman:+15+20",
+                    UrlImageFootwear = "/Images/Woman/Woman:+15+20/Woman:+15+20/footwear_3_w.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:+15+20/Woman:+15+20/shirt_1_w.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:+15+20/Woman:+15+20/trousers_2_w.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:+15+20/Woman:+15+20/hat_1_w.png",
+                    UrlImageAdd = "/Images/Woman/Woman:+15+20/Woman:+15+20/accessory_1_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 34,
+                    Name = "Woman:+15+20.rain",
+                    UrlImageFootwear = "/Images/Woman/Woman:+15+20/Woman:+15+20.rain/footwear_3_w.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:+15+20/Woman:+15+20.rain/shirt_1_w.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:+15+20/Woman:+15+20.rain/trousers_2_w.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:+15+20/Woman:+15+20.rain/hat_1_w.png",
+                    UrlImageAdd = "/Images/Woman/Woman:+15+20/Woman:+15+20.rain/accessory_4_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 35,
+                    Name = "Woman:+20+25",
+                    UrlImageFootwear = "/Images/Woman/Woman:+20+25/Woman:+20+25/footwear_3_w.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:+20+25/Woman:+20+25/hat_1_w.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:+20+25/Woman:+20+25/dress_1_w.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:+20+25/Woman:+20+25/accessory_1_w.png",
+                    UrlImageAdd = "/Images/Woman/Woman:+20+25/Woman:+20+25/accessory_1_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 36,
+                    Name = "Woman:+20+25.rain",
+                    UrlImageFootwear = "/Images/Woman/Woman:+20+25/Woman:+20+25.rain/footwear_3_w.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:+20+25/Woman:+20+25.rain/accessory_6_w_m.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:+20+25/Woman:+20+25.rain/dress_1_w.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:+20+25/Woman:+20+25.rain/accessory_1_w.png",
+                    UrlImageAdd = "/Images/Woman/Woman:+20+25/Woman:+20+25.rain/accessory_4_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 37,
+                    Name = "Woman:+25+30",
+                    UrlImageFootwear = "/Images/Woman/Woman:+25+30/Woman:+25+30/footwear_5_w.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:+25+30/Woman:+25+30/undershirt_2_w.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:+25+30/Woman:+25+30/skirt_1_w.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:+25+30/Woman:+25+30/accessory_2_w.png",
+                    UrlImageAdd = "/Images/Woman/Woman:+25+30/Woman:+25+30/accessory_1_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 38,
+                    Name = "Woman:+25+30.rain",
+                    UrlImageFootwear = "/Images/Woman/Woman:+25+30/Woman:+25+30.rain/footwear_5_w.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:+25+30/Woman:+25+30.rain/undershirt_2_w.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:+25+30/Woman:+25+30.rain/skirt_1_w.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:+25+30/Woman:+25+30.rain/accessory_4_w_m.png",
+                    UrlImageAdd = "/Images/Woman/Woman:+25+30/Woman:+25+30.rain/accessory_1_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 39,
+                    Name = "Woman:+30+35",
+                    UrlImageFootwear = "/Images/Woman/Woman:+30+35/Woman:+30+35/footwear_4_w.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:+30+35/Woman:+30+35/hat_1_w.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:+30+35/Woman:+30+35/dress_2_w.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:+30+35/Woman:+30+35/accessory_7_w_m.png",
+                    UrlImageAdd = "/Images/Woman/Woman:+30+35/Woman:+30+35/accessory_1_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 40,
+                    Name = "Woman:+30+35.rain",
+                    UrlImageFootwear = "/Images/Woman/Woman:+30+35/Woman:+30+35.rain/footwear_4_w.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:+30+35/Woman:+30+35.rain/hat_1_w.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:+30+35/Woman:+30+35.rain/dress_2_w.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:+30+35/Woman:+30+35.rain/accessory_7_w_m.png",
+                    UrlImageAdd = "/Images/Woman/Woman:+30+35/Woman:+30+35.rain/accessory_4_w_m.png"
+                },
+                new ClothingItem
+                {
+                    Id = 41,
+                    Name = "Woman:+35+",
+                    UrlImageFootwear = "/Images/Woman/Woman:+35+/Woman:+35+/footwear_5_w_m.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:+35+/Woman:+35+/hat_2_w.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:+35+/Woman:+35+/dress_2_w.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:+35+/Woman:+35+/accessory_7_w_m.png",
+                    UrlImageAdd = "/Images/Woman/Woman:+35+/Woman:+35+/swimsuit_1_w.png"
+                },
+                new ClothingItem
+                {
+                    Id = 42,
+                    Name = "Woman:+35+.rain",
+                    UrlImageFootwear = "/Images/Woman/Woman:+35+/Woman:+35+.rain/footwear_5_w_m.png",
+                    UrlImageOuterwear = "/Images/Woman/Woman:+35+/Woman:+35+.rain/swimsuit_1_w.png",
+                    UrlImageUnderwear = "/Images/Woman/Woman:+35+/Woman:+35+.rain/dress_2_w.png",
+                    UrlImageAccessory = "/Images/Woman/Woman:+35+/Woman:+35+.rain/accessory_7_w_m.png",
+                    UrlImageAdd = "/Images/Woman/Woman:+35+/Woman:+35+.rain/accessory_4_w_m.png"
+                }
                 );
 
             // заполнение таблицы образов
