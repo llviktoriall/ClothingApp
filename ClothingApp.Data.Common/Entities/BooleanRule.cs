@@ -25,13 +25,8 @@ namespace ClothingApp.Data.Common.Entities
         PresenceOfRain = 1,
 
         /// <summary>
-        /// Наличие ветра
-        /// </summary>
-        PresenceOfWind = 2,
-
-        /// <summary>
         /// Наличие снега
         /// </summary>
-        PresenceOfSnow = 3
+        PresenceOfSnow = 2
     }
 }

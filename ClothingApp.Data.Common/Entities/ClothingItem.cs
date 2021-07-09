@@ -35,6 +35,21 @@ namespace ClothingApp.Data.Common.Entities
         /// </summary>
         public string UrlImageUnderwear { get; set; }
 
-        public ICollection<CompositionOfStyle> CompositionOfStyles { get; set; }
+        //public ICollection<CompositionOfStyle> CompositionOfStyles { get; set; }
+
+        public GenderType GenderType { get; set; }
+        
+    }
+    public enum GenderType
+    {
+        /// <summary>
+        /// Мужской пол
+        /// </summary>
+        Male = 1,
+
+        /// <summary>
+        /// Женский пол
+        /// </summary>
+        Female = 2
     }
 }

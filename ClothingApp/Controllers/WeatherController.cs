@@ -109,10 +109,8 @@ namespace ClothingApp.Web.Controllers
             var weatherToDay = GetWeatherToday(currentCity);
             ViewBag.GetWeatherToday = weatherToDay;
             Weather weather = weatherToDay.FirstOrDefault(x => x.PartOfDay == GetPartOfDay());
-            var listStyles= _iClothongService.GetStyles(weather).Result;
-            ViewBag.GetStyleToday = listStyles;
-            ViewBag.ClothingItem = await _iClothongService.GetClothingItem(listStyles, weather);
-
+            var listClothingItems= _iClothongService.GetStyles(weather).Result;
+            ViewBag.ClothingItem = listClothingItems;
 
             string[] dateTime = DateTime.Today.ToLongDateString().Split(' ');
             ViewBag.DateTime = dateTime;
@@ -135,9 +133,8 @@ namespace ClothingApp.Web.Controllers
             var weatherTomorrow = GetWeatherTomorrow(currentCity);
             ViewBag.GetWeatherTomorrow = weatherTomorrow;
             Weather weather = weatherTomorrow.FirstOrDefault(x => x.PartOfDay == GetPartOfDay());
-            var listStyles = _iClothongService.GetStyles(weather).Result;
-            ViewBag.GetStyleTomorrow = listStyles;
-            ViewBag.ClothingItem = await _iClothongService.GetClothingItem(listStyles, weather);
+            var listClothingItems = _iClothongService.GetStyles(weather).Result;
+            ViewBag.ClothingItem = listClothingItems;
 
             ViewBag.Sovet = _iClothongService.GetSovet(weather);
 
@@ -163,7 +160,6 @@ namespace ClothingApp.Web.Controllers
                 .OrderBy(x => x[0].DateTime.Date).ToList();
             ViewBag.GetWeatherForFiveDays = getWeatherForFiveDays;
 
-            var styleForFiveDays = new List<List<Style>>();//5 дней, в каждом по 2 шт - М и Ж
             var listClothingItem= new List<List<ClothingItem>>();//первые 5шт - М 1 день, следующие Ж 1 день, и т.д.
             foreach (var weatherList in getWeatherForFiveDays)
             {
@@ -172,13 +168,10 @@ namespace ClothingApp.Web.Controllers
                     if (weather.PartOfDay == PartOfDay.Daytime)
                     {
                         var styles = _iClothongService.GetStyles(weather).Result;
-                        styleForFiveDays.Add(styles);
-                        var clothingItems = _iClothongService.GetClothingItem(styles, weather).Result;
-                        listClothingItem.Add(clothingItems);
+                        listClothingItem.Add(styles);
                     }
                 }
             }
-            ViewBag.GetStyleForFiveDays = styleForFiveDays;
             ViewBag.ClothingItem = listClothingItem;
             ViewBag.Sovet = _iClothongService.GetSovetFiveDays(getWeatherForFiveDays);
             var a = (ViewBag.GetWeatherForFiveDays[0][0].DateTime.ToUniversalTime().Date - DateTime.UtcNow.Date).TotalDays;
@@ -195,9 +188,8 @@ namespace ClothingApp.Web.Controllers
             var weatherToDay = GetWeatherToday(currentCity);
             ViewBag.GetWeatherToday = weatherToDay;
             Weather weather = weatherToDay.FirstOrDefault(x => x.PartOfDay == GetPartOfDay());
-            var listStyles = _iClothongService.GetStyles(weather).Result;
-            ViewBag.GetStyleToday = listStyles;
-            ViewBag.ClothingItem = await _iClothongService.GetClothingItem(listStyles, weather);
+            var listClothingItems = _iClothongService.GetStyles(weather).Result;
+            ViewBag.ClothingItem = listClothingItems;
 
 
             string[] dateTime = DateTime.Today.ToLongDateString().Split(' ');
@@ -219,9 +211,8 @@ namespace ClothingApp.Web.Controllers
             var weatherTomorrow = GetWeatherTomorrow(currentCity);
             ViewBag.GetWeatherTomorrow = weatherTomorrow;
             Weather weather = weatherTomorrow.FirstOrDefault(x => x.PartOfDay == GetPartOfDay());
-            var listStyles = _iClothongService.GetStyles(weather).Result;
-            ViewBag.GetStyleTomorrow = listStyles;
-            ViewBag.ClothingItem = await _iClothongService.GetClothingItem(listStyles, weather);
+            var listClothingItems = _iClothongService.GetStyles(weather).Result;
+            ViewBag.ClothingItem = listClothingItems;
 
             ViewBag.Sovet = _iClothongService.GetSovet(weather);
 
@@ -245,7 +236,6 @@ namespace ClothingApp.Web.Controllers
                 .GroupBy(x => x.DateTime.Date).Select(x => x.OrderBy(x => x.DateTime).ToList())
                 .OrderBy(x => x[0].DateTime.Date).ToList();
             ViewBag.GetWeatherForFiveDays = getWeatherForFiveDays;
-            var styleForFiveDays = new List<List<Style>>();
             var listClothingItem = new List<List<ClothingItem>>();
             foreach (var weatherList in getWeatherForFiveDays)
             {
@@ -254,13 +244,10 @@ namespace ClothingApp.Web.Controllers
                     if (weather.PartOfDay == PartOfDay.Daytime)
                     {
                         var styles = _iClothongService.GetStyles(weather).Result;
-                        styleForFiveDays.Add(styles);
-                        var clothingItems = _iClothongService.GetClothingItem(styles, weather).Result;
-                        listClothingItem.Add(clothingItems);
+                        listClothingItem.Add(styles);
                     }
                 }
             }
-            ViewBag.GetStyleForFiveDays = styleForFiveDays;
             ViewBag.ClothingItem = listClothingItem;
             var a = (ViewBag.GetWeatherForFiveDays[0][0].DateTime.ToUniversalTime().Date - DateTime.UtcNow.Date).TotalDays;
             ViewBag.IsDifferentPlaces = false;

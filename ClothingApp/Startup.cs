@@ -50,7 +50,7 @@ namespace ClothingApp
 
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped<IClothingService, ClothingService>();
-            services.AddScoped<IAdminRepository, AdminRepository>();
+            //services.AddScoped<IAdminRepository, AdminRepository>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();

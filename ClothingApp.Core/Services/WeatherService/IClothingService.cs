@@ -10,9 +10,8 @@ namespace ClothingApp.Core.Services.WeatherService
 {
     public interface IClothingService : IBaseRepository<MatchingStyleToWeather>
     {
-        Task<List<Style>> GetStyles(Weather weather);
-        Task<List<ClothingItem>> GetClothingItem(List<Style> styles, Weather weather);
-        Task<List<Style>> GetAllStyles();
+        Task<List<ClothingItem>> GetStyles(Weather weather);
+        Task<List<ClothingItem>> GetAllStyles();
         string GetSovet(Weather weather);
         string GetSovetFiveDays(List<List<Weather>> weathers);
 

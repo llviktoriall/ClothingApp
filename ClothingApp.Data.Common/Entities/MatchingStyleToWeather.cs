@@ -12,9 +12,9 @@ namespace ClothingApp.Data.Common.Entities
         [ForeignKey("WeatherSettingId")]
         public WeatherSetting WeatherSetting { get; set; }
 
-        public long StyleId { get; set; }
+        public long ClothingItemId { get; set; }
 
-        [ForeignKey("StyleId")]
-        public Style Style { get; set; }
+        [ForeignKey("ClothingItemId")]
+        public ClothingItem ClothingItem { get; set; }
     }
 }

@@ -10,9 +10,9 @@ namespace ClothingApp.Data.Common.Configurations
     {
         protected override void ConfigureCustom(EntityTypeBuilder<MatchingStyleToWeather> builder)
         {
-            builder.HasOne(o => o.Style)
+            builder.HasOne(o => o.ClothingItem)
                 .WithMany()
-                .HasForeignKey(o => o.StyleId);
+                .HasForeignKey(o => o.ClothingItemId);
 
             builder.HasOne(o => o.WeatherSetting)
                 .WithMany()

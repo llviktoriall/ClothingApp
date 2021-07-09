@@ -19,31 +19,34 @@ namespace ClothingApp.Core.Services.WeatherService
             _context = context;
         }
 
-        public async Task<List<Style>> GetStyles(Weather weather)
+        public async Task<List<ClothingItem>> GetStyles(Weather weather)
         {
             //находим среднее арифметическое значение температуры
             double temp = (weather.TemperatureMax + weather.TemperatureMin) / 2;
 
             // проверяем есть ли дождь/снег/ветер и если есть,то создаём правило
-            var booleanRule = new BooleanRule();
+            var booleanRuleRain = new BooleanRule();
+            booleanRuleRain.BoolType = BoolType.PresenceOfRain;
+            var booleanRuleSnow = new BooleanRule();
+            booleanRuleSnow.BoolType = BoolType.PresenceOfSnow;
             if (weather.DescriptionSky.Contains("дождь"))
             {
-                booleanRule.BoolType = BoolType.PresenceOfRain;
-                booleanRule.IsExist = true;
+                booleanRuleRain.IsExist = true;
             }
             else if (weather.DescriptionSky.Contains("снег"))
             {
-                booleanRule.BoolType = BoolType.PresenceOfSnow;
-                booleanRule.IsExist = true;
+                booleanRuleSnow.IsExist = true;
             }
 
             else
             {
-                booleanRule.IsExist = false;
+                booleanRuleRain.IsExist = false;
+                booleanRuleSnow.IsExist = false;
             }
 
             //находим в бд правила, которое соответствуют входным параметрам
-            var selectBooleanRule = await _context.BooleanRules.FirstOrDefaultAsync(e => e.IsExist && e.BoolType == booleanRule.BoolType);
+            var selectBooleanRule = await _context.BooleanRules.FirstOrDefaultAsync(e => e.IsExist == booleanRuleRain.IsExist && e.BoolType == booleanRuleRain.BoolType ||
+            e.IsExist == booleanRuleSnow.IsExist && e.BoolType == booleanRuleSnow.BoolType);//две строки - условие дождя и условие снега
 
             var selectRangeRule = await _context.RangeRules.FirstOrDefaultAsync(e => e.MinTemperature <= temp && temp <= e.MaxTemperarure);
 
@@ -53,110 +56,18 @@ namespace ClothingApp.Core.Services.WeatherService
             //находим в бд стиль по настройкам
             var styleByWeathers = await _context.MatchingStyleToWeathers.Where(x => x.WeatherSettingId == weatherSetting.Id).ToListAsync();
 
-            List<Style> styles = new List<Style>();
+            List<ClothingItem> items = new List<ClothingItem>();
             foreach (var s in styleByWeathers)
             {
-                var style = await _context.Styles.FirstOrDefaultAsync(x => x.Id == s.StyleId);
-                styles.Add(style);
+                var style = await _context.ClothingItems.FirstOrDefaultAsync(x => x.Id == s.ClothingItemId);
+                items.Add(style);
             }
-            return styles;
+            return items;
         }
-        public async Task<List<ClothingItem>> GetClothingItem(List<Style> styles, Weather weather)
+        
+        public async Task<List<ClothingItem>> GetAllStyles()
         {
-            var compositionOfStyles = new List<CompositionOfStyle>();
-            foreach (var st in styles)
-            {
-                var compositionOfStyle = await _context.CompositionOfStyles.FirstOrDefaultAsync(x => x.StyleId == st.Id);
-                compositionOfStyles.Add(compositionOfStyle);
-            }
-
-            double temp = (weather.TemperatureMax + weather.TemperatureMin) / 2;
-            var selectRangeRule = await _context.RangeRules.FirstOrDefaultAsync(e => e.MinTemperature <= temp && temp <= e.MaxTemperarure);
-            
-            var listClothingItem = new List<ClothingItem>();
-            foreach (var s in compositionOfStyles)
-            {
-                if (selectRangeRule.Id == 1)
-                {
-                    var clothingItem = await _context.ClothingItems.FirstOrDefaultAsync(x => x.Id == selectRangeRule.Id);
-                    listClothingItem.Add(clothingItem);
-                    var count = selectRangeRule.Id + 3;
-                    var clothingItemFemale = _context.ClothingItems.FirstOrDefault(x => x.Id == count);
-                    listClothingItem.Add(clothingItemFemale);
-                    break;
-                }
-                else if (selectRangeRule.Id == 2)
-                {
-                    var clothingItem = await _context.ClothingItems.FirstOrDefaultAsync(x => x.Id == selectRangeRule.Id);
-                    listClothingItem.Add(clothingItem);
-                    var count = selectRangeRule.Id + 3;
-                    var clothingItemFemale = _context.ClothingItems.FirstOrDefault(x => x.Id == count);
-                    listClothingItem.Add(clothingItemFemale);
-                    break;
-                }
-                else if (selectRangeRule.Id == 3)
-                {
-                    var clothingItem = await _context.ClothingItems.FirstOrDefaultAsync(x => x.Id == selectRangeRule.Id);
-                    listClothingItem.Add(clothingItem);
-                    var count = selectRangeRule.Id + 3;
-                    var clothingItemFemale = _context.ClothingItems.FirstOrDefault(x => x.Id == count);
-                    listClothingItem.Add(clothingItemFemale);
-                    break;
-                }
-                else if (selectRangeRule.Id == 4)
-                {
-                    var clothingItem = await _context.ClothingItems.FirstOrDefaultAsync(x => x.Id == selectRangeRule.Id);
-                    listClothingItem.Add(clothingItem);
-                    var count = selectRangeRule.Id + 3;
-                    var clothingItemFemale = _context.ClothingItems.FirstOrDefault(x => x.Id == count);
-                    listClothingItem.Add(clothingItemFemale);
-                    break;
-                }
-                else if (selectRangeRule.Id == 5)
-                {
-                    var clothingItem = await _context.ClothingItems.FirstOrDefaultAsync(x => x.Id == selectRangeRule.Id);
-                    listClothingItem.Add(clothingItem);
-                    var count = selectRangeRule.Id + 3;
-                    var clothingItemFemale = _context.ClothingItems.FirstOrDefault(x => x.Id == count);
-                    listClothingItem.Add(clothingItemFemale);
-                    break;
-                }
-                else if (selectRangeRule.Id == 6)
-                {
-                    var clothingItem = await _context.ClothingItems.FirstOrDefaultAsync(x => x.Id == selectRangeRule.Id);
-                    listClothingItem.Add(clothingItem);
-                    var count = selectRangeRule.Id + 3;
-                    var clothingItemFemale = _context.ClothingItems.FirstOrDefault(x => x.Id == count);
-                    listClothingItem.Add(clothingItemFemale);
-                    break;
-                }
-                else if (selectRangeRule.Id == 7)
-                {
-                    var clothingItem = await _context.ClothingItems.FirstOrDefaultAsync(x => x.Id == selectRangeRule.Id);
-                    listClothingItem.Add(clothingItem);
-                    var count = selectRangeRule.Id + 3;
-                    var clothingItemFemale = _context.ClothingItems.FirstOrDefault(x => x.Id == count);
-                    listClothingItem.Add(clothingItemFemale);
-                    break;
-                }
-                else if (selectRangeRule.Id == 8)
-                {
-                    var clothingItem = await _context.ClothingItems.FirstOrDefaultAsync(x => x.Id == selectRangeRule.Id);
-                    listClothingItem.Add(clothingItem);
-                    var count = selectRangeRule.Id + 3;
-                    var clothingItemFemale = _context.ClothingItems.FirstOrDefault(x => x.Id == count);
-                    listClothingItem.Add(clothingItemFemale);
-                    break;
-                }
-
-            
-
-            }
-                return listClothingItem;
-        }
-        public async Task<List<Style>> GetAllStyles()
-        {
-            var stylesList = await _context.Styles.ToListAsync();
+            var stylesList = await _context.ClothingItems.ToListAsync();
             return stylesList;
         }
         public string GetSovet(Weather weather)
@@ -226,21 +137,6 @@ namespace ClothingApp.Core.Services.WeatherService
             return sovet;
         }
 
-        /// <summary>
-        /// получить картинки по образу
-        /// </summary>
-        /// <returns></returns>
-        //public async Task<List<ClothingItem>> GetClothingItem(Style style)
-        //{
-        //    var compositionOfStyle= await _context.CompositionOfStyles.Where(x => x.StyleId == style.Id).ToListAsync();
-        //    var listClothingItem = new List<ClothingItem>();
-        //    foreach(var s in compositionOfStyle)
-        //    {
-        //        var clothingItem = await _context.ClothingItems.FirstOrDefaultAsync(x => x.Id == s.Id);
-        //        listClothingItem.Add(clothingItem);
-        //    }
-        //    return listClothingItem;
-        //}
     }
 
 }
