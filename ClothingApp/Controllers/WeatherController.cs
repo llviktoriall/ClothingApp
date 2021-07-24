@@ -67,8 +67,8 @@ namespace ClothingApp.Web.Controllers
         
         private PartOfDay GetPartOfDay()
         {
-            if (DateTime.Now.Hour > 6 && DateTime.Now.Hour < 18) return PartOfDay.Morning;
-            else if (DateTime.Now.Hour > 18 && DateTime.Now.Hour < 21) return PartOfDay.Daytime;
+            if (DateTime.Now.Hour > 2 && DateTime.Now.Hour < 12) return PartOfDay.Morning;
+            else if (DateTime.Now.Hour > 11 && DateTime.Now.Hour < 18) return PartOfDay.Daytime;
             else return PartOfDay.Evening;
         }
 

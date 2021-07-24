@@ -47,9 +47,9 @@ namespace ClothingApp.Data.Common.Models
 
         private void SetPartOfDay()
         {
-            if (DateTime.Hour > 3 && DateTime.Hour < 18) PartOfDay = Models.PartOfDay.Morning;
-            else if (DateTime.Hour > 17 && DateTime.Hour < 19) PartOfDay = Models.PartOfDay.Daytime;
-            else if (DateTime.Hour > 18 && DateTime.Hour < 23) PartOfDay = Models.PartOfDay.Evening;            
+            if (DateTime.Hour > 2 && DateTime.Hour < 12) PartOfDay = Models.PartOfDay.Morning;
+            else if (DateTime.Hour > 11 && DateTime.Hour < 18) PartOfDay = Models.PartOfDay.Daytime;
+            else PartOfDay = Models.PartOfDay.Evening;
         }
     }
 }
